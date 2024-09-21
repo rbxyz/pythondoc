@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ball ai</title>
+    <script>
+    async function sendMessage() {
+        const message = document.getElementById('message').value;
+        const respostaContainer = document.getElementById('resposta');
+
+        const res = await fetch('/conversa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        
+        const { resposta } = await res.json();
+
+        respostaContainer.innerHTML += `
+            <p><strong>Usuário:</strong> ${message}</p>
+            <p><strong>Assistente:</strong> ${resposta}</p>
+        `;
+        document.getElementById('message').value = '';
+    }
+</script>
+
+</head>
+<body>
+    <h1>ball ai - teste</h1>
+    <input type="text" id="message" placeholder="Digite sua mensagem">
+    <button onclick="sendMessage()">Enviar</button>
+    <div id="resposta"></div>
+</body>
+</html>
