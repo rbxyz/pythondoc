@@ -1,4 +1,4 @@
-fastapi
+Flask==2.2.3
 uvicorn
 openai
 python-dotenv
