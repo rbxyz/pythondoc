@@ -1,5 +1,7 @@
 from openai import OpenAI
+from langchain_openai import OpenAI
 from dotenv import load_dotenv
+import getpass
 import os
 
 #chamando o .env
@@ -17,21 +19,6 @@ file = client.files.create(
 )
 print(file)
 print('==============')
-
-#cria o agente
-#assistant = client.beta.assistants.create(
-#    name="Analista Técnico de Futebol",
-#    instructions="Analise as questões sobre placares de futebol.",
-#    model="gpt-3.5-turbo",
-#    tool_resources={
-#    "code_interpreter": {
-#      "file_ids": [file.id]
-#    }
-#  }
-#)
-
-#print("Assistente criado:", assistant)
-#print('==============')
 
 #cria a thread e começa o chat
 thread = client.beta.threads.create()
